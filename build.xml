@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Copyright (c) 2007 Marco Merli <yohji@marcomerli.net>
+	
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software Foundation,
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<project name="dolly" default="dist" basedir=".">
+
+	<property name="root" value="." />
+	<property name="target" value="${root}/target" />
+	<property name="staging" value="${target}/staging" />
+	<property name="dist" value="${root}/dist" />
+	<property name="data" value="${root}/data" />
+	<property name="dolly-core" value="${root}/dolly-core" />
+	<property name="dolly-clone" value="${root}/dolly-clone" />
+	<property name="creator" value="creator.ser" />
+	<property name="dolly" value="dolly.jar" />
+
+
+	<target name="prepare">
+		<delete dir="${dist}" />
+		<mkdir dir="${dist}" />
+		<mkdir dir="${staging}" />
+	</target>
+
+
+	<target name="compile" depends="prepare">
+		<exec dir="${root}" executable="mvn">
+			<arg value="clean" />
+			<arg value="compile" />
+			<arg value="jar:jar" />
+			<arg value="war:exploded" />
+		</exec>
+	</target>
+
+
+	<target name="build" depends="prepare,compile">
+		<copy todir="${staging}">
+			<fileset file="${dolly-core}/target/dolly-core/WEB-INF/lib/*.jar" />
+			<fileset file="${dolly-clone}/target/dolly-clone/WEB-INF/lib/*.jar" />
+			<fileset file="${dolly-core}/target/dolly-core.jar" />
+			<fileset file="${dolly-clone}/target/dolly-clone.jar" />
+		</copy>
+		<unjar dest="${staging}">
+			<fileset file="${staging}/*.jar" />
+		</unjar>
+		<delete>
+			<fileset file="${staging}/*.jar" />
+			<fileset file="${staging}/META-INF" />
+		</delete>
+
+		<jar destfile="${staging}/${dolly}">
+			<manifest>
+				<attribute name="Main-Class" value="net.marcomerli.dolly.Dolly" />
+			</manifest>
+			<fileset file="${staging}/**" />
+		</jar>
+	</target>
+
+
+	<target name="dist" depends="prepare,compile,build">
+		<copy todir="${staging}" verbose="true">
+			<fileset file="${data}/${creator}" />
+		</copy>
+
+		<zip destfile="${dist}/dolly.zip" compress="true">
+			<fileset file="${staging}/${dolly}" />
+			<fileset file="${staging}/${creator}" />
+			<fileset file="${staging}/${x}" />
+		</zip>
+		<checksum file="${dist}/dolly.zip" />
+
+		<delete dir="${staging}" />
+	</target>
+
+
+	<target name="site">
+		<exec dir="${root}" executable="mvn">
+			<arg value="clean" />
+			<arg value="compile" />
+			<arg value="site:site" />
+		</exec>
+
+		<copy todir="${target}/site/dolly-core">
+			<fileset dir="${dolly-core}/target/site" />
+		</copy>
+		<copy todir="${target}/site/dolly-clone">
+			<fileset dir="${dolly-clone}/target/site" />
+		</copy>
+	</target>
+
+</project>

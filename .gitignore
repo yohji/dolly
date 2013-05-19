@@ -1,0 +1,16 @@
+# Trash directories
+*DS_Store
+
+# Backup files
+*~
+*.swp
+
+# User project files
+.classpath
+.project
+.settings/
+
+# Binaries
+target/
+bin/
+dist/
