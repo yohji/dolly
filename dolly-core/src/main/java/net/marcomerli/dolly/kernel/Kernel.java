@@ -73,14 +73,16 @@ public class Kernel extends Thread implements Runnable {
 		running = status;
 	}
 	
-	public Long frequency()
+	@Override
+	public final Long frequency()
 	{
 		return frequency;
 	}
 	
-	public void setFrequency( Number frequency )
+	@Override
+	public final void setFrequency( Number milliSeconds )
 	{
-		this.frequency = frequency.longValue();
+		this.frequency = milliSeconds.longValue();
 	}
 	
 	public static Long time()

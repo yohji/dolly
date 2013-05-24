@@ -23,4 +23,8 @@ public interface Runnable extends java.lang.Runnable {
 	boolean isRunning();
 
 	void setRunning( boolean status );
+	
+	public Long frequency();
+
+	public void setFrequency( Number milliSeconds );
 }

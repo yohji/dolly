@@ -1,43 +1,35 @@
-|| R E A D M E ||
+|| DOLLY README ||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
-Dolly use Apache Maven to build Java code and CMake to generate Makefile to build C++ code.
-Software requirements specification:
-	* compatible Java5 JDK version
-	* CMake
-	* C++ compiler
+Dolly use Apache Maven to build Java code. Software requirements specification:
+
+	* Compatible Java5 JDK version
 	* Apache Ant 
 	* Apache Maven
 
 
 | HOWTO BUILD DOLLY DISTRIBUTION |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-	Generate Makefile to build C++ code (only first time):
-	
-		$ cd dolly-core
-		$ cmake .
-	
 	Create distribution:
-	
+
+                $ cd dolly	
 		$ ant
 
 
 | HOWTO SETUP AN ECLIPSE DEVELOPMENT ENVIROMENT |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 	Set a new variable in Preferences ::-> Java -> Build path -> Classpath variables as
-		name: M2_REPO
+		
+                name: M2_REPO
 		path: /path/to/maven/repository
 		
 	Use maven to setup eclipse project
-	
+
+                $ cd dolly	
 		$ mvn eclipse:eclipse
 	
 	Import the two distinct project from File ::-> Import -> Existing project
 	
-		dolly-core
-		dolly-clone
-		
-	Generate Makefile to build C++ code:
-	
-		$ cd dolly-core
-		$ cmake .
+		dolly/dolly-core
+		dolly/dolly-clone
+

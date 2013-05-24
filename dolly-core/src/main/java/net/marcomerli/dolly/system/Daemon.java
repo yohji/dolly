@@ -77,12 +77,14 @@ public abstract class Daemon implements Runnable, Lockable, Serializable {
 		return Kernel.time() - time;
 	}
 
-	public Long frequency()
+	@Override
+	public final Long frequency()
 	{
 		return frequency;
 	}
 
-	public void setFrequency( Number cycleTime )
+	@Override
+	public final void setFrequency( Number cycleTime )
 	{
 		this.frequency = cycleTime.longValue();
 	}
