@@ -32,7 +32,7 @@
 	<name>Dolly</name>
 	<groupId>net.marcomerli</groupId>
 	<artifactId>dolly</artifactId>
-	<version>${project.version}</version>
+	<version>0.3.1</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -41,8 +41,7 @@
 	</modules>
 	
 	<properties>
-	    <project.version>0.3.0</project.version>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	</properties>
 
 	<scm>
@@ -126,6 +125,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
 						<id>default</id>
@@ -140,6 +140,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
 				<executions>
 					<execution>
 						<id>default</id>
@@ -160,6 +161,7 @@
 					<locales>en,it</locales>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
@@ -168,6 +170,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.14.1</version>
 				<configuration>
 					<showSuccess>true</showSuccess>
 				</configuration>
@@ -176,11 +179,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
 			</plugin>
 		</plugins>
 	</reporting>

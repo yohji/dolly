@@ -26,17 +26,16 @@
 	<parent>
 		<groupId>net.marcomerli</groupId>
 		<artifactId>dolly</artifactId>
-		<version>${project.version}</version>
+		<version>0.3.1</version>
 	</parent>
 
 	<name>Dolly Clone</name>
 	<groupId>net.marcomerli.dolly</groupId>
 	<artifactId>dolly-clone</artifactId>
-	<version>${project.version}</version>
+	<version>0.3.1</version>
 	<packaging>jar</packaging>
 	
 	<properties>
-	    <project.version>0.3.0</project.version>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	</properties>
 	
@@ -49,7 +48,7 @@
 		<dependency>
 			<groupId>net.marcomerli.dolly</groupId>
 			<artifactId>dolly-core</artifactId>
-			<version>${project.version}</version>
+			<version>0.3.1</version>
 			<scope>compile</scope>
 		</dependency>
 		
