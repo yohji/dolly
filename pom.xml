@@ -45,15 +45,8 @@
   	</properties>
 
 	<scm>
-		<url>https://dollycreature.svn.sourceforge.net</url>
-		<connection>scm:svn:http://dollycreature.svn.sourceforge.net/svnroot/dollycreature/trunk</connection>
-		<developerConnection>scm:svn:https://dollycreature.svn.sourceforge.net/svnroot/dollycreature/trunk</developerConnection>
+		<connection>scm:git:git://git.code.sf.net/p/dollycreature/code dollycreature-code</connection>
 	</scm>
-
-	<issueManagement>
-		<system>trac</system>
-		<url>http://sourceforge.net/apps/trac/dollycreature</url>
-	</issueManagement>
 	
 	<licenses>
 		<license>
